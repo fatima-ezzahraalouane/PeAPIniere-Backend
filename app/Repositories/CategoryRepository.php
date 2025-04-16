@@ -16,7 +16,8 @@ class CategoryRepository implements CategoryRepositoryInterface
     public function store(Request $request)
     {
         return Category::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'description' => $request->description
         ]);
     }
 
