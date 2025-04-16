@@ -24,7 +24,8 @@ class UpdateCategoryRequest extends FormRequest
         $slug = $this->route('slug'); // récupérer le slug de l'URL
 
         return [
-            'name' => 'required|string|unique:categories,name,' . $slug . ',slug'
+            'name' => 'required|string|unique:categories,name,' . $slug . ',slug',
+            'description' => 'nullable|string'
         ];
     }
 }
