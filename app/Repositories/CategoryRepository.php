@@ -29,7 +29,10 @@ class CategoryRepository implements CategoryRepositoryInterface
     public function update(Request $request, string $slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $category->update(['name' => $request->name]);
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
         return $category;
     }
 
