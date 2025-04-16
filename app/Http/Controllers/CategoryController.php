@@ -46,7 +46,8 @@ class CategoryController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"name"},
-     *             @OA\Property(property="name", type="string", example="Aromatiques")
+     *             @OA\Property(property="name", type="string", example="Aromatiques"),
+     *             @QA\Property(property="description", type="string", example="Plantes aromatiques utilisées en cuisine")
      *         )
      *     ),
      *     @OA\Response(
@@ -112,7 +113,8 @@ class CategoryController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"name"},
-     *             @OA\Property(property="name", type="string", example="Médicinales")
+     *             @OA\Property(property="name", type="string", example="Médicinales"),
+     *             @QA\Property(property="description", type="string", example="Plantes médicinales utilisées en phytothérapie")
      *         )
      *     ),
      *     @OA\Response(
