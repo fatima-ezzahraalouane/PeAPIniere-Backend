@@ -11,7 +11,15 @@ class PlantRepository implements PlantRepositoryInterface
 {
     public function index()
     {
-        return Plant::with('category', 'images')->get();
+        $query = Plant::with('category', 'images');
+
+        if (request()->has('category') && request()->category !== '') {
+            $query->whereHas('category', function ($q) {
+                $q->where('slug', request()->category);
+            });
+        }
+
+        return $query->get();
     }
 
     public function show(string $slug)
