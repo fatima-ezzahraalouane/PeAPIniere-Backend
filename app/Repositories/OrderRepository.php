@@ -12,8 +12,16 @@ class OrderRepository implements OrderRepositoryInterface
 {
     public function store(Request $request)
     {
+        $total = 0;
+
+        foreach ($request->plants as $plant) {
+            $plantModel = Plant::findOrFail($plant['id']);
+            $total += $plantModel->price * $plant['quantity'];
+        }
+
         $order = Order::create([
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'total_price' => $total,
         ]);
 
         foreach ($request->plants as $plant) {
